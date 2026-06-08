@@ -85,6 +85,10 @@ On first run, the tool will:
 - certifi
 - prompt_toolkit
 
+## Built With
+
+This project was built in collaboration with **GitHub Copilot**, leveraging AI-assisted development for rapid prototyping and implementation.
+
 ## License
 
 See LICENSE file for details.
