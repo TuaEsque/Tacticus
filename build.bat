@@ -12,7 +12,7 @@ if errorlevel 1 (
 )
 
 REM Build the executable
-pyinstaller --onefile --console --name tacticus tacticus.py
+pyinstaller --onefile --console --name tacticus --hidden-import=prompt_toolkit tacticus.py
 
 echo.
 echo Build complete! The executable is in the 'dist' folder.
