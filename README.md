@@ -29,7 +29,7 @@ A cross-platform CLI tool to browse and explore Tacticus game API data in an int
    ```
 4. Run the script:
    ```bash
-   python tacticus.py
+   python tacticus_api_browser.py
    ```
 
 ## Usage
