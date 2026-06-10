@@ -179,32 +179,77 @@ def export_analysis_to_json(analysis, output_path):
     return path
 
 
-def build_xml_element(tag_name, value):
-    element = ET.Element(tag_name)
-
-    if isinstance(value, dict):
-        for key, child_value in value.items():
-            if isinstance(child_value, list):
-                list_container = ET.SubElement(element, key)
-                for item in child_value:
-                    list_container.append(build_xml_element("item", item))
-            else:
-                element.append(build_xml_element(key, child_value))
-    elif isinstance(value, list):
-        for item in value:
-            element.append(build_xml_element("item", item))
-    elif value is None:
-        element.set("nil", "true")
+def _append_text_element(parent, tag_name, value):
+    child = ET.SubElement(parent, tag_name)
+    if value is None:
+        child.set("nil", "true")
     else:
-        element.text = str(value)
+        child.text = str(value)
+    return child
 
-    return element
+
+def _append_team(parent, team_data):
+    team_element = ET.SubElement(parent, "team")
+
+    heroes_element = ET.SubElement(team_element, "heroes")
+    for hero in team_data.get("heroes", []):
+        hero_element = ET.SubElement(heroes_element, "hero")
+        _append_text_element(hero_element, "unitId", hero.get("unitId"))
+        _append_text_element(hero_element, "power", hero.get("power"))
+
+    machine_data = team_data.get("machineOfWar")
+    machine_element = ET.SubElement(team_element, "machineOfWar")
+    if machine_data is None:
+        machine_element.set("nil", "true")
+    else:
+        _append_text_element(machine_element, "unitId", machine_data.get("unitId"))
+        _append_text_element(machine_element, "power", machine_data.get("power"))
 
 
 def export_analysis_to_xml(analysis, output_path):
     path = Path(output_path)
     xml_path = path.with_suffix(".xml") if path.suffix else Path(f"{path}.xml")
-    root = build_xml_element("guildRaidAnalysis", analysis)
+
+    root = ET.Element("guildRaidAnalysis")
+    _append_text_element(root, "source", analysis.get("source"))
+    _append_text_element(root, "userIdFilter", analysis.get("userIdFilter"))
+
+    users_element = ET.SubElement(root, "users")
+    for user_id, user_data in analysis.get("users", {}).items():
+        user_element = ET.SubElement(users_element, "user", id=user_id)
+        _append_text_element(user_element, "totalDamage", user_data.get("totalDamage"))
+
+        bosses_element = ET.SubElement(user_element, "bosses")
+        for boss_name, boss_data in user_data.get("bosses", {}).items():
+            boss_element = ET.SubElement(bosses_element, "boss", name=boss_name)
+            _append_text_element(boss_element, "totalDamage", boss_data.get("totalDamage"))
+
+            rarities_element = ET.SubElement(boss_element, "rarities")
+            for rarity_name, rarity_data in boss_data.get("rarities", {}).items():
+                rarity_element = ET.SubElement(rarities_element, "rarity", name=rarity_name)
+                _append_text_element(rarity_element, "totalDamage", rarity_data.get("totalDamage"))
+
+                damage_types_element = ET.SubElement(rarity_element, "damageTypes")
+                for damage_type_name, damage_type_data in rarity_data.get("damageTypes", {}).items():
+                    damage_type_element = ET.SubElement(damage_types_element, "damageType", name=damage_type_name)
+                    _append_text_element(damage_type_element, "totalDamage", damage_type_data.get("totalDamage"))
+
+                    entries_element = ET.SubElement(damage_type_element, "entries")
+                    for entry in damage_type_data.get("entries", []):
+                        entry_element = ET.SubElement(entries_element, "entry")
+                        _append_text_element(entry_element, "damageDealt", entry.get("damageDealt"))
+                        _append_text_element(entry_element, "damageType", entry.get("damageType"))
+                        _append_text_element(entry_element, "encounterType", entry.get("encounterType"))
+                        _append_text_element(entry_element, "unitId", entry.get("unitId"))
+                        _append_text_element(entry_element, "type", entry.get("type"))
+                        _append_text_element(entry_element, "rarity", entry.get("rarity"))
+                        _append_text_element(entry_element, "startedOn", entry.get("startedOn"))
+                        _append_text_element(entry_element, "completedOn", entry.get("completedOn"))
+
+                        team_data = entry.get("team")
+                        if team_data is not None:
+                            _append_team(entry_element, team_data)
+
     ET.indent(root, space="  ")
     tree = ET.ElementTree(root)
     tree.write(xml_path, encoding="utf-8", xml_declaration=True)
