@@ -7,10 +7,19 @@ A cross-platform CLI tool to browse and explore Tacticus game API data in an int
 - **Interactive Data Browser** - Navigate player data, guild data, and raid data with an intuitive CLI menu
 - **Tab Completion** - Cross-platform (Windows, Linux, macOS) tab completion for quick navigation
 - **Secure API Keys** - Supports environment variables or interactive input for API keys
+- **Guild Raid Analyzer** - Export and review guild raid damage by user, boss type, rarity, and damage type
+
+## Structure
+
+The project is split into three small scripts:
+
+- [tacticus_api_client.py](tacticus_api_client.py) - shared API access layer with `get_api_keys()`, `create_session()`, `fetch_tacticus_data()`, and `fetch_guild_raid_data()`
+- [tacticus_api_browser.py](tacticus_api_browser.py) - interactive menu browser for the player, guild, and raid data trees
+- [tacticus_guild_raid_analyzer.py](tacticus_guild_raid_analyzer.py) - guild raid reporting tool with optional user filtering and local JSON export
 
 ## Installation
 
-### Option 1: Run as Python Script
+### API Browser
 
 1. Clone or download this repository
 2. Install dependencies:
@@ -32,12 +41,38 @@ A cross-platform CLI tool to browse and explore Tacticus game API data in an int
    python tacticus_api_browser.py
    ```
 
+### Guild Raid Analysis
+
+The analyzer fetches the `guildRaid` endpoint through the shared API client, groups the data by user, boss type, rarity, and damage type, and writes the full analysis to a local JSON file.
+
+Run it with:
+
+```bash
+python tacticus_guild_raid_analyzer.py
+```
+
+Filter the report to one userId:
+
+```bash
+python tacticus_guild_raid_analyzer.py --user-id 75bcd109-9822-43fa-a75e-f9a8e251338e
+```
+
+Choose a different export file if needed:
+
+```bash
+python tacticus_guild_raid_analyzer.py --output my_guild_raid_analysis.json
+```
+
+Battle entries include the team composition in the exported JSON, using `heroDetails` and `machineOfWarDetails`.
+
 ## Usage
 
 Once running, the CLI presents three main data sources:
 - **Player Data** - Your character, units, inventory, etc.
 - **Guild Data** - Guild members, treasury, etc.
 - **Guild Raid Data** - Raid statistics and information
+
+The browser uses `fetch_tacticus_data()` from [tacticus_api_client.py](tacticus_api_client.py) to load the three top-level data trees at runtime.
 
 ### Navigation
 

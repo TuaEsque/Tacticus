@@ -1,57 +1,7 @@
-import requests
-import certifi
-import os
 import sys
 from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import Completer, Completion
-
-def SetKeys(key_name):
-    key = os.environ.get(key_name)
-    return key
-
-url = "https://api.tacticusgame.com/api/v1"
-s = requests.Session()
-s.verify = certifi.where()
-
-
-def get_api_keys():
-    """
-    Gets API keys from environment variables or prompts user for input.
-    Checks environment variables first, then prompts user if not found.
-    Returns tuple of (player_key, guild_key)
-    """
-    from prompt_toolkit import prompt as tk_prompt
-    
-    print("\n" + "=" * 50)
-    print("API Key Configuration")
-    print("=" * 50)
-    
-    # Try to get from environment first
-    player_key = os.environ.get("TACTICUS_PLAYER_KEY")
-    guild_key = os.environ.get("TACTICUS_GUILD_KEY")
-    
-    # Prompt for player key if not found in env
-    if not player_key:
-        print("\nTACTICUS_PLAYER_KEY not found in environment variables.")
-        player_key = tk_prompt("Enter your Tacticus Player API Key: ", is_password=True)
-    else:
-        print("TACTICUS_PLAYER_KEY found in environment variables")
-    
-    # Prompt for guild key if not found in env
-    if not guild_key:
-        print("TACTICUS_GUILD_KEY not found in environment variables.")
-        guild_key = tk_prompt("Enter your Tacticus Guild API Key: ", is_password=True)
-    else:
-        print("TACTICUS_GUILD_KEY found in environment variables")
-    
-    if not player_key or not guild_key:
-        print("\nError: API keys are required to proceed.")
-        sys.exit(1)
-    
-    print("\n" + "=" * 50)
-    print("Connecting to API...\n")
-    
-    return player_key, guild_key
+from tacticus_api_client import fetch_tacticus_data
 
 
 def get_item_label(item, fallback_idx):
@@ -274,29 +224,7 @@ def run_cli_menu(data):
 
 
 def main():
-    # Get API keys (from env vars or user input)
-    player_key, guild_key = get_api_keys()
-    
-    # Create headers with the retrieved keys
-    player_headers = {
-        "x-api-key": player_key
-    }
-    guild_headers = {
-        "x-api-key": guild_key
-    }
-    
-    # Fetch data from API
-    playerData = s.get(url=f"{url}/player", headers=player_headers).json()
-    guildData = s.get(url=f"{url}/guild", headers=guild_headers).json()
-    guildRaidData = s.get(url=f"{url}/guildRaid", headers=guild_headers).json()
-    
-    # Create a parent menu structure containing all three data sources
-    parent_data = {
-        "Player Data": playerData,
-        "Guild Data": guildData,
-        "Guild Raid Data": guildRaidData
-    }
-    
+    parent_data = fetch_tacticus_data()
     run_cli_menu(parent_data)
 
 

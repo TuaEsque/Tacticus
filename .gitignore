@@ -131,6 +131,10 @@ ENV/
 env.bak/
 venv.bak/
 
+# Guild raid analysis output
+guild_raid_analysis.json
+guild_raid_analysis.xml
+
 # Spyder project settings
 .spyderproject
 .spyproject
