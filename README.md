@@ -73,9 +73,25 @@ python tacticus_guild_raid_analyzer.py --output my_guild_raid_analysis.json
 
 Battle entries include the team composition in the exported JSON and XML, using `heroDetails` and `machineOfWarDetails`.
 
+### Raid to XLSX
+
+Using the XML data fetched by the Guild Raid Analyzer script, this script generates an Excel (or Google Sheets) spreadsheet that visualises the data.
+
+Before running the analyzer, install the project dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run it with:
+
+```bash
+python tacticus_raid_to_xlsx.py.py
+```
+
 ## Usage
 
-Once running, the CLI presents three main data sources:
+Once running the API Browser, the CLI presents three main data sources:
 - **Player Data** - Your character, units, inventory, etc.
 - **Guild Data** - Guild members, treasury, etc.
 - **Guild Raid Data** - Raid statistics and information

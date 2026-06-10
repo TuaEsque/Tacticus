@@ -1,3 +1,4 @@
 requests
 certifi
 prompt_toolkit
+openpyxl
