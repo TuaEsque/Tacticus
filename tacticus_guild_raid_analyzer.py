@@ -92,16 +92,18 @@ def build_report(entries):
 
     for entry in entries:
         user_key = get_entry_user_key(entry)
-        boss_key = get_entry_boss_key(entry)
         rarity = get_entry_rarity(entry)
+        boss_key = get_entry_boss_key(entry)
         damage_type = get_entry_damage_type(entry)
-        grouped[user_key][boss_key][rarity].append((damage_type, entry))
+
+        grouped[user_key][rarity][boss_key].append((damage_type, entry))
 
     return grouped
 
 
 def build_analysis(entries, user_id_filter=None):
     grouped = build_report(entries)
+
     analysis = {
         "source": "guildRaid",
         "userIdFilter": user_id_filter,
@@ -110,36 +112,49 @@ def build_analysis(entries, user_id_filter=None):
 
     for user_key in sorted(grouped):
         user_total = 0
+
         user_data = {
             "totalDamage": 0,
-            "bosses": {},
+            "rarities": {},
         }
 
-        for boss_key in sorted(grouped[user_key]):
-            boss_total = 0
-            boss_data = {
+        for rarity in sorted(grouped[user_key]):
+            rarity_total = 0
+
+            rarity_data = {
                 "totalDamage": 0,
-                "rarities": {},
+                "bosses": {},
             }
 
-            for rarity in sorted(grouped[user_key][boss_key]):
-                entries_for_rarity = grouped[user_key][boss_key][rarity]
-                rarity_total = sum(get_damage_value(entry) for _, entry in entries_for_rarity)
-                boss_total += rarity_total
-                user_total += rarity_total
+            for boss_key in sorted(grouped[user_key][rarity]):
+                entries_for_boss = grouped[user_key][rarity][boss_key]
+
+                boss_total = sum(
+                    get_damage_value(entry)
+                    for _, entry in entries_for_boss
+                )
+
+                rarity_total += boss_total
+                user_total += boss_total
 
                 damage_type_buckets = defaultdict(list)
-                for damage_type, entry in entries_for_rarity:
+
+                for damage_type, entry in entries_for_boss:
                     damage_type_buckets[damage_type].append(entry)
 
-                rarity_data = {
-                    "totalDamage": rarity_total,
+                boss_data = {
+                    "totalDamage": boss_total,
                     "damageTypes": {},
                 }
 
                 for damage_type in sorted(damage_type_buckets):
                     damage_type_entries = damage_type_buckets[damage_type]
-                    damage_type_total = sum(get_damage_value(entry) for entry in damage_type_entries)
+
+                    damage_type_total = sum(
+                        get_damage_value(entry)
+                        for entry in damage_type_entries
+                    )
+
                     damage_type_data = {
                         "totalDamage": damage_type_total,
                         "entries": [],
@@ -156,16 +171,18 @@ def build_analysis(entries, user_id_filter=None):
                             "startedOn": entry.get("startedOn"),
                             "completedOn": entry.get("completedOn"),
                         }
+
                         if damage_type.lower() == "battle":
                             entry_data["team"] = build_team_details(entry)
+
                         damage_type_data["entries"].append(entry_data)
 
-                    rarity_data["damageTypes"][damage_type] = damage_type_data
+                    boss_data["damageTypes"][damage_type] = damage_type_data
 
-                boss_data["rarities"][rarity] = rarity_data
+                rarity_data["bosses"][boss_key] = boss_data
 
-            boss_data["totalDamage"] = boss_total
-            user_data["bosses"][boss_key] = boss_data
+            rarity_data["totalDamage"] = rarity_total
+            user_data["rarities"][rarity] = rarity_data
 
         user_data["totalDamage"] = user_total
         analysis["users"][user_key] = user_data
@@ -219,8 +236,40 @@ def export_analysis_to_xml(analysis, output_path):
         user_element = ET.SubElement(users_element, "user", id=user_id)
         _append_text_element(user_element, "totalDamage", user_data.get("totalDamage"))
 
-        bosses_element = ET.SubElement(user_element, "bosses")
-        for boss_name, boss_data in user_data.get("bosses", {}).items():
+        rarities_element = ET.SubElement(user_element, "rarities")
+
+        for rarity_name, rarity_data in user_data.get("rarities", {}).items():
+            rarity_element = ET.SubElement(
+                rarities_element,
+                "rarity",
+                name=rarity_name
+            )
+
+            _append_text_element(
+                rarity_element,
+                "totalDamage",
+                rarity_data.get("totalDamage")
+            )
+
+            bosses_element = ET.SubElement(rarity_element, "bosses")
+
+            for boss_name, boss_data in rarity_data.get("bosses", {}).items():
+                boss_element = ET.SubElement(
+                    bosses_element,
+                    "boss",
+                    name=boss_name
+                )
+
+                _append_text_element(
+                    boss_element,
+                    "totalDamage",
+                    boss_data.get("totalDamage")
+                )
+
+                damage_types_element = ET.SubElement(
+                    boss_element,
+                    "damageTypes"
+                )
             boss_element = ET.SubElement(bosses_element, "boss", name=boss_name)
             _append_text_element(boss_element, "totalDamage", boss_data.get("totalDamage"))
 
@@ -263,15 +312,18 @@ def print_report(grouped):
         print("=" * 80)
 
         user_total = 0
-        for boss_key in sorted(grouped[user_key]):
-            print(f"\nBoss: {boss_key}")
+        for rarity in sorted(grouped[user_key]):
+            print(f"\nRarity: {rarity}")
 
-            boss_total = 0
-            for rarity in sorted(grouped[user_key][boss_key]):
-                entries = grouped[user_key][boss_key][rarity]
-                rarity_total = sum(get_damage_value(entry) for _, entry in entries)
-                boss_total += rarity_total
-                user_total += rarity_total
+            rarity_total = 0
+
+            for boss_key in sorted(grouped[user_key][rarity]):
+                print(f"  Boss: {boss_key}")
+
+                entries = grouped[user_key][rarity][boss_key]
+                boss_total = sum(get_damage_value(entry) for _, entry in entries)
+                rarity_total += boss_total
+                user_total += boss_total
 
                 print(f"  Rarity: {rarity} | Damage: {rarity_total} | Entries: {len(entries)}")
 
@@ -295,9 +347,9 @@ def print_report(grouped):
                         for index, entry in enumerate(damage_type_entries, 1):
                             print(f"      Entry #{index}: damage={get_damage_value(entry)}")
 
-            print(f"  Boss Total: {boss_total}")
+            print(f"    Boss Total: {boss_total}")
 
-        print(f"\nUser Total: {user_total}")
+        print(f"  Rarity Total: {rarity_total}")
         print()
 
 
