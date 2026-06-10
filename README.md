@@ -45,6 +45,14 @@ The project is split into three small scripts:
 
 The analyzer fetches the `guildRaid` endpoint through the shared API client, groups the data by user, boss type, rarity, and damage type, and writes the full analysis to local JSON and XML files.
 
+Before running the analyzer, install the project dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+The analyzer uses the same dependencies as the browser, so no extra packages are required beyond `requests`, `certifi`, and `prompt_toolkit`.
+
 Run it with:
 
 ```bash
