@@ -15,7 +15,7 @@ The project is split into three small scripts:
 
 - [tacticus_api_client.py](tacticus_api_client.py) - shared API access layer with `get_api_keys()`, `create_session()`, `fetch_tacticus_data()`, and `fetch_guild_raid_data()`
 - [tacticus_api_browser.py](tacticus_api_browser.py) - interactive menu browser for the player, guild, and raid data trees
-- [tacticus_guild_raid_analyzer.py](tacticus_guild_raid_analyzer.py) - guild raid reporting tool with optional user filtering and local JSON export
+- [tacticus_guild_raid_analyzer.py](tacticus_guild_raid_analyzer.py) - guild raid reporting tool with optional user filtering and local JSON/XML export
 
 ## Installation
 
@@ -43,7 +43,7 @@ The project is split into three small scripts:
 
 ### Guild Raid Analysis
 
-The analyzer fetches the `guildRaid` endpoint through the shared API client, groups the data by user, boss type, rarity, and damage type, and writes the full analysis to a local JSON file.
+The analyzer fetches the `guildRaid` endpoint through the shared API client, groups the data by user, boss type, rarity, and damage type, and writes the full analysis to local JSON and XML files.
 
 Run it with:
 
@@ -57,13 +57,13 @@ Filter the report to one userId:
 python tacticus_guild_raid_analyzer.py --user-id 75bcd109-9822-43fa-a75e-f9a8e251338e
 ```
 
-Choose a different export file if needed:
+Choose a different export file base name if needed:
 
 ```bash
 python tacticus_guild_raid_analyzer.py --output my_guild_raid_analysis.json
 ```
 
-Battle entries include the team composition in the exported JSON, using `heroDetails` and `machineOfWarDetails`.
+Battle entries include the team composition in the exported JSON and XML, using `heroDetails` and `machineOfWarDetails`.
 
 ## Usage
 
