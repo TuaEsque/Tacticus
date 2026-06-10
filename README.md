@@ -7,7 +7,6 @@ A cross-platform CLI tool to browse and explore Tacticus game API data in an int
 - **Interactive Data Browser** - Navigate player data, guild data, and raid data with an intuitive CLI menu
 - **Tab Completion** - Cross-platform (Windows, Linux, macOS) tab completion for quick navigation
 - **Secure API Keys** - Supports environment variables or interactive input for API keys
-- **Standalone Executable** - Build into a `.exe` that doesn't require Python to be installed
 
 ## Installation
 
@@ -32,29 +31,6 @@ A cross-platform CLI tool to browse and explore Tacticus game API data in an int
    ```bash
    python tacticus.py
    ```
-
-### Option 2: Build as Standalone Executable
-
-Build a `.exe` (Windows) or standalone executable (Linux/macOS) that doesn't require Python:
-
-**Windows:**
-```bash
-build.bat
-```
-
-**Linux/macOS:**
-```bash
-chmod +x build.sh
-./build.sh
-```
-
-The executable will be in the `dist` folder and can be shared with others.
-
-### Option 3: Manual Build with PyInstaller
-
-```bash
-pyinstaller --onefile --console --name tacticus tacticus.py
-```
 
 ## Usage
 
