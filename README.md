@@ -122,7 +122,7 @@ On first run, the tool will:
 
 ## Built With
 
-This project was built in collaboration with **GitHub Copilot**, leveraging AI-assisted development for rapid prototyping and implementation.
+This project was built in collaboration with **GitHub Copilot** and **Claude**, leveraging AI-assisted development for rapid prototyping and implementation.
 
 ## License
 
