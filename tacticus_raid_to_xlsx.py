@@ -1,7 +1,7 @@
 import argparse
+import json
 import sys
 from pathlib import Path
-from xml.etree import ElementTree as ET
 
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
@@ -58,67 +58,53 @@ def _row_bg(i):
     return ALT_ROW if i % 2 == 1 else WHITE
 
 
-# ── XML Parsing ────────────────────────────────────────────────────────────────
+# ── JSON Parsing ───────────────────────────────────────────────────────────────
 
-def parse_xml(path):
-    root = ET.parse(path).getroot()
+def parse_json(path):
+    with open(path, encoding="utf-8") as f:
+        data = json.load(f)
+
     users, entries = {}, []
 
-    for u in root.findall(".//user"):
-        uid = u.get("id", "<unknown>")
-        bosses = {}
-        for b in u.findall(".//boss"):
-            bname = b.get("name", "<unknown>")
-            rarities = {}
-            for r in b.findall(".//rarity"):
-                rname = r.get("name", "<unknown>")
+    for uid, udata in data.get("users", {}).items():
+        rarities = {}
+        for rname, rdata in udata.get("rarities", {}).items():
+            bosses = {}
+            for bname, bdata in rdata.get("bosses", {}).items():
                 dtypes = {}
-                for dt in r.findall(".//damageType"):
-                    dname = dt.get("name", "<unknown>")
+                for dname, dtdata in bdata.get("damageTypes", {}).items():
                     dt_entries = []
-                    for e_el in dt.findall(".//entry"):
+                    for entry in dtdata.get("entries", []):
                         e = {
-                            "userId": uid, "boss": bname,
-                            "rarity": rname, "damageType": dname,
-                            "damageDealt": int(e_el.findtext("damageDealt") or 0),
-                            "encounterType": e_el.findtext("encounterType"),
-                            "unitId": e_el.findtext("unitId"),
-                            "type": e_el.findtext("type"),
-                            "startedOn": e_el.findtext("startedOn"),
-                            "completedOn": e_el.findtext("completedOn"),
-                            "team": None,
+                            "userId": uid,
+                            "boss": bname,
+                            "rarity": rname,
+                            "damageType": dname,
+                            "damageDealt": int(entry.get("damageDealt") or 0),
+                            "encounterType": entry.get("encounterType"),
+                            "unitId": entry.get("unitId"),
+                            "type": entry.get("type"),
+                            "startedOn": entry.get("startedOn"),
+                            "completedOn": entry.get("completedOn"),
+                            "team": entry.get("team"),
                         }
-                        team_el = e_el.find("team")
-                        if team_el is not None:
-                            heroes = [
-                                {"unitId": h.findtext("unitId"), "power": h.findtext("power")}
-                                for h in team_el.findall(".//hero")
-                            ]
-                            mow = team_el.find("machineOfWar")
-                            machine = None
-                            if mow is not None and mow.get("nil") != "true":
-                                machine = {
-                                    "unitId": mow.findtext("unitId"),
-                                    "power": mow.findtext("power"),
-                                }
-                            e["team"] = {"heroes": heroes, "machineOfWar": machine}
                         dt_entries.append(e)
                         entries.append(e)
                     dtypes[dname] = {
-                        "total": int(dt.findtext("totalDamage") or 0),
+                        "total": int(dtdata.get("totalDamage") or 0),
                         "entries": dt_entries,
                     }
-                rarities[rname] = {
-                    "total": int(r.findtext("totalDamage") or 0),
+                bosses[bname] = {
+                    "total": int(bdata.get("totalDamage") or 0),
                     "damageTypes": dtypes,
                 }
-            bosses[bname] = {
-                "total": int(b.findtext("totalDamage") or 0),
-                "rarities": rarities,
+            rarities[rname] = {
+                "total": int(rdata.get("totalDamage") or 0),
+                "bosses": bosses,
             }
         users[uid] = {
-            "total": int(u.findtext("totalDamage") or 0),
-            "bosses": bosses,
+            "total": int(udata.get("totalDamage") or 0),
+            "rarities": rarities,
         }
 
     return users, entries
@@ -165,7 +151,7 @@ def _boss_matrix(wb, users):
     ws = wb.create_sheet("User vs Boss")
     ws.sheet_view.showGridLines = False
 
-    bosses = sorted({b for u in users.values() for b in u["bosses"]})
+    bosses = sorted({b for u in users.values() for r in u["rarities"].values() for b in r["bosses"]})
     by_damage = sorted(users.items(), key=lambda x: x[1]["total"], reverse=True)
     tcol = len(bosses) + 2
 
@@ -183,7 +169,7 @@ def _boss_matrix(wb, users):
         fc = get_column_letter(2)
         lc = get_column_letter(tcol - 1)
         for j, b in enumerate(bosses, 2):
-            val = udata["bosses"].get(b, {}).get("total", 0)
+            val = sum(r["bosses"].get(b, {}).get("total", 0) for r in udata["rarities"].values())
             _cell(ws, i, j, val if val else None, bg=bg, fmt="#,##0", align="right")
         _cell(ws, i, tcol, f"=SUM({fc}{i}:{lc}{i})",
               bg=LIGHT_BLUE, bold=True, fmt="#,##0", align="right")
@@ -219,7 +205,7 @@ def _breakdown(wb, users):
     ws.sheet_view.showGridLines = False
     _title(ws, "Guild Raid – Detailed Damage Breakdown", 7)
 
-    for col, label in enumerate(["Player ID", "Boss", "Rarity", "Damage Type",
+    for col, label in enumerate(["Player ID", "Rarity", "Boss", "Damage Type",
                                   "Total Damage", "Entries", "% of User Total"], 1):
         _hdr(ws, 2, col, label)
     ws.row_dimensions[2].height = 20
@@ -228,14 +214,14 @@ def _breakdown(wb, users):
     by_damage = sorted(users.items(), key=lambda x: x[1]["total"], reverse=True)
     row = 3
     for uid, udata in by_damage:
-        for boss in sorted(udata["bosses"]):
-            for rar in sorted(udata["bosses"][boss]["rarities"]):
-                for dt in sorted(udata["bosses"][boss]["rarities"][rar]["damageTypes"]):
-                    dtdata = udata["bosses"][boss]["rarities"][rar]["damageTypes"][dt]
+        for rar in sorted(udata["rarities"]):
+            for boss in sorted(udata["rarities"][rar]["bosses"]):
+                for dt in sorted(udata["rarities"][rar]["bosses"][boss]["damageTypes"]):
+                    dtdata = udata["rarities"][rar]["bosses"][boss]["damageTypes"][dt]
                     bg = _row_bg(row)
                     _cell(ws, row, 1, uid, bg=bg)
-                    _cell(ws, row, 2, boss, bg=bg)
-                    _cell(ws, row, 3, rar, bg=bg)
+                    _cell(ws, row, 2, rar, bg=bg)
+                    _cell(ws, row, 3, boss, bg=bg)
                     _cell(ws, row, 4, dt, bg=bg)
                     _cell(ws, row, 5, dtdata["total"], bg=bg, fmt="#,##0", align="right")
                     _cell(ws, row, 6, len(dtdata["entries"]), bg=bg, fmt="#,##0", align="right")
@@ -258,7 +244,7 @@ def _raw_entries(wb, entries):
     ws.sheet_view.showGridLines = False
     _title(ws, "Guild Raid – All Individual Entries", 10)
 
-    headers = ["Player ID", "Boss", "Rarity", "Damage Type", "Damage Dealt",
+    headers = ["Player ID", "Rarity", "Boss", "Damage Type", "Damage Dealt",
                "Encounter Type", "Unit ID", "Type", "Started On", "Completed On"]
     for col, label in enumerate(headers, 1):
         _hdr(ws, 2, col, label)
@@ -267,7 +253,7 @@ def _raw_entries(wb, entries):
 
     for i, e in enumerate(entries, 3):
         bg = _row_bg(i)
-        vals = [e["userId"], e["boss"], e["rarity"], e["damageType"], e["damageDealt"],
+        vals = [e["userId"], e["rarity"], e["boss"], e["damageType"], e["damageDealt"],
                 e["encounterType"], e["unitId"], e["type"], e["startedOn"], e["completedOn"]]
         for col, v in enumerate(vals, 1):
             _cell(ws, i, col, v, bg=bg,
@@ -291,7 +277,7 @@ def _battle_teams(wb, entries):
     ws.sheet_view.showGridLines = False
     _title(ws, "Guild Raid – Battle Team Compositions", 8)
 
-    for col, label in enumerate(["Player ID", "Boss", "Rarity", "Damage Dealt",
+    for col, label in enumerate(["Player ID", "Rarity", "Boss", "Damage Dealt",
                                   "Heroes", "Hero Powers", "Machine of War", "MoW Power"], 1):
         _hdr(ws, 2, col, label)
     ws.row_dimensions[2].height = 20
@@ -306,7 +292,7 @@ def _battle_teams(wb, entries):
         hero_pwrs = ", ".join(str(h["power"]) for h in heroes if h.get("power"))
         mow_id = (machine or {}).get("unitId") or "—"
         mow_pwr = str((machine or {}).get("power") or "")
-        for col, v in enumerate([e["userId"], e["boss"], e["rarity"], e["damageDealt"],
+        for col, v in enumerate([e["userId"], e["rarity"], e["boss"], e["damageDealt"],
                                   hero_names, hero_pwrs, mow_id, mow_pwr], 1):
             _cell(ws, i, col, v, bg=bg,
                   fmt="#,##0" if col == 4 else None,
@@ -320,22 +306,22 @@ def _battle_teams(wb, entries):
 # ── Entry point ────────────────────────────────────────────────────────────────
 
 def main():
-    parser = argparse.ArgumentParser(description="Convert guild_raid_analysis.xml to Excel.")
-    parser.add_argument("xml_file", nargs="?", default="guild_raid_analysis.xml",
-                        help="Path to the XML export (default: guild_raid_analysis.xml)")
+    parser = argparse.ArgumentParser(description="Convert guild_raid_analysis.json to Excel.")
+    parser.add_argument("json_file", nargs="?", default="guild_raid_analysis.json",
+                        help="Path to the JSON export (default: guild_raid_analysis.json)")
     parser.add_argument("--output", default=None,
-                        help="Output .xlsx path (default: same stem as XML + .xlsx)")
+                        help="Output .xlsx path (default: same stem as JSON + .xlsx)")
     args = parser.parse_args()
 
-    xml_path = Path(args.xml_file)
-    if not xml_path.exists():
-        sys.exit(f"Error: {xml_path} not found.")
+    json_path = Path(args.json_file)
+    if not json_path.exists():
+        sys.exit(f"Error: {json_path} not found.")
 
-    out_path = Path(args.output) if args.output else xml_path.with_suffix(".xlsx")
-    print(f"Parsing {xml_path} …")
-    users, entries = parse_xml(xml_path)
+    out_path = Path(args.output) if args.output else json_path.with_suffix(".xlsx")
+    print(f"Parsing {json_path} …")
+    users, entries = parse_json(json_path)
     if not users:
-        sys.exit("No user data found in XML.")
+        sys.exit("No user data found in JSON.")
     print(f"  {len(users)} players, {len(entries)} entries.")
 
     wb = Workbook()
