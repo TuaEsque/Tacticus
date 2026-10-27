@@ -1,0 +1,268 @@
+{
+  "player": {
+    "details": {
+      "name": "SampleCommander",
+      "powerLevel": 1234567
+    },
+    "units": [
+      {
+        "id": "ultraCalgar",
+        "name": "Calgar",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "ultraTigurius",
+        "name": "Tigurius",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "ultraTitus",
+        "name": "Titus",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "ultraEliminatorSgt",
+        "name": "Certus",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "ultraApothecary",
+        "name": "Incisus",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "ultraDreadnought",
+        "name": "Galatian",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "adeptCelestine",
+        "name": "Celestine",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "adeptMorvenn",
+        "name": "Morvenn Vahl",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "adeptCanoness",
+        "name": "Roswitha",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "adeptRetributor",
+        "name": "Vindicta",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "adeptHospitaller",
+        "name": "Isabella",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "adeptExorcist",
+        "name": "Exorcist",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "darkaAzrael",
+        "name": "Azrael",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "darkaAsmodai",
+        "name": "Asmodai",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "darkaHellblaster",
+        "name": "Sarquael",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "darkaTerminator",
+        "name": "Baraqiel",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "darkaCompanion",
+        "name": "Forcas",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      },
+      {
+        "id": "darkaStormSpeeder",
+        "name": "Storm Speeder",
+        "progressionIndex": 12,
+        "xp": 0,
+        "xpLevel": 50,
+        "rank": 15,
+        "abilities": [],
+        "upgrades": [],
+        "items": [],
+        "shards": 0,
+        "mythicShards": 0
+      }
+    ],
+    "inventory": {},
+    "progress": {
+      "campaigns": [],
+      "legendaryEvents": [],
+      "guildRaid": {
+        "tokens": {
+          "current": 3,
+          "max": 3,
+          "regenDelayInSeconds": 43200
+        },
+        "bombTokens": {
+          "current": 1,
+          "max": 1,
+          "regenDelayInSeconds": 64800
+        }
+      }
+    }
+  },
+  "metaData": {
+    "configHash": "synthetic",
+    "lastUpdatedOn": 1793014400,
+    "scopes": [
+      "Player"
+    ]
+  }
+}

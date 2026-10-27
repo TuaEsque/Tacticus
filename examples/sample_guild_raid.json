@@ -1,0 +1,913 @@
+{
+  "season": 109,
+  "seasonConfigId": "synthetic-sample",
+  "entries": [
+    {
+      "userId": "00000000-0000-4000-8000-000000000001",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "remainingHp": 3820000,
+      "maxHp": 4200000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_TervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 380000,
+      "damageType": "Battle",
+      "startedOn": 1793000300,
+      "heroDetails": [
+        {
+          "unitId": "ultraCalgar",
+          "power": 21000
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 21350
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 21700
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 22050
+        },
+        {
+          "unitId": "ultraApothecary",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 18000
+      },
+      "completedOn": 1793000600
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000002",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "remainingHp": 3210000,
+      "maxHp": 4200000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_TervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 610000,
+      "damageType": "Battle",
+      "startedOn": 1793000900,
+      "heroDetails": [
+        {
+          "unitId": "darkaAzrael",
+          "power": 21000
+        },
+        {
+          "unitId": "darkaAsmodai",
+          "power": 21350
+        },
+        {
+          "unitId": "darkaHellblaster",
+          "power": 21700
+        },
+        {
+          "unitId": "darkaTerminator",
+          "power": 22050
+        },
+        {
+          "unitId": "darkaCompanion",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "machineOfWarDetails": {
+        "unitId": "darkaStormSpeeder",
+        "power": 18000
+      },
+      "completedOn": 1793001200
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000003",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "remainingHp": 2510000,
+      "maxHp": 4200000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_TervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 700000,
+      "damageType": "Battle",
+      "startedOn": 1793001500,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 21000
+        },
+        {
+          "unitId": "custoKyrus",
+          "power": 21350
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 21700
+        },
+        {
+          "unitId": "custoAtlacoya",
+          "power": 22050
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "completedOn": 1793001800
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000001",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "remainingHp": 2130000,
+      "maxHp": 4200000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_TervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 380000,
+      "damageType": "Battle",
+      "startedOn": 1793002100,
+      "heroDetails": [
+        {
+          "unitId": "ultraCalgar",
+          "power": 21000
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 21350
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 21700
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 22050
+        },
+        {
+          "unitId": "ultraApothecary",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 18000
+      },
+      "completedOn": 1793002400
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000002",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "remainingHp": 1520000,
+      "maxHp": 4200000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_TervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 610000,
+      "damageType": "Battle",
+      "startedOn": 1793002700,
+      "heroDetails": [
+        {
+          "unitId": "darkaAzrael",
+          "power": 21000
+        },
+        {
+          "unitId": "darkaAsmodai",
+          "power": 21350
+        },
+        {
+          "unitId": "darkaHellblaster",
+          "power": 21700
+        },
+        {
+          "unitId": "darkaTerminator",
+          "power": 22050
+        },
+        {
+          "unitId": "darkaCompanion",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "machineOfWarDetails": {
+        "unitId": "darkaStormSpeeder",
+        "power": 18000
+      },
+      "completedOn": 1793003000
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000003",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "remainingHp": 820000,
+      "maxHp": 4200000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_TervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 700000,
+      "damageType": "Battle",
+      "startedOn": 1793003300,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 21000
+        },
+        {
+          "unitId": "custoKyrus",
+          "power": 21350
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 21700
+        },
+        {
+          "unitId": "custoAtlacoya",
+          "power": 22050
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "completedOn": 1793003600
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000001",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "remainingHp": 440000,
+      "maxHp": 4200000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_TervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 380000,
+      "damageType": "Battle",
+      "startedOn": 1793003900,
+      "heroDetails": [
+        {
+          "unitId": "ultraCalgar",
+          "power": 21000
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 21350
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 21700
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 22050
+        },
+        {
+          "unitId": "ultraApothecary",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 18000
+      },
+      "completedOn": 1793004200
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000002",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "remainingHp": 0,
+      "maxHp": 4200000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_TervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 440000,
+      "damageType": "Battle",
+      "startedOn": 1793004500,
+      "heroDetails": [
+        {
+          "unitId": "darkaAzrael",
+          "power": 21000
+        },
+        {
+          "unitId": "darkaAsmodai",
+          "power": 21350
+        },
+        {
+          "unitId": "darkaHellblaster",
+          "power": 21700
+        },
+        {
+          "unitId": "darkaTerminator",
+          "power": 22050
+        },
+        {
+          "unitId": "darkaCompanion",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "machineOfWarDetails": {
+        "unitId": "darkaStormSpeeder",
+        "power": 18000
+      },
+      "completedOn": 1793004800
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000001",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 1,
+      "remainingHp": 870000,
+      "maxHp": 1200000,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss_Makari",
+      "type": "Makari",
+      "rarity": "Legendary",
+      "damageDealt": 330000,
+      "damageType": "Battle",
+      "startedOn": 1793005100,
+      "heroDetails": [
+        {
+          "unitId": "ultraCalgar",
+          "power": 21000
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 21350
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 21700
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 22050
+        },
+        {
+          "unitId": "ultraApothecary",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 18000
+      },
+      "completedOn": 1793005400
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000002",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 1,
+      "remainingHp": 450000,
+      "maxHp": 1200000,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss_Makari",
+      "type": "Makari",
+      "rarity": "Legendary",
+      "damageDealt": 420000,
+      "damageType": "Battle",
+      "startedOn": 1793005700,
+      "heroDetails": [
+        {
+          "unitId": "darkaAzrael",
+          "power": 21000
+        },
+        {
+          "unitId": "darkaAsmodai",
+          "power": 21350
+        },
+        {
+          "unitId": "darkaHellblaster",
+          "power": 21700
+        },
+        {
+          "unitId": "darkaTerminator",
+          "power": 22050
+        },
+        {
+          "unitId": "darkaCompanion",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "machineOfWarDetails": {
+        "unitId": "darkaStormSpeeder",
+        "power": 18000
+      },
+      "completedOn": 1793006000
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000003",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 1,
+      "remainingHp": 100000,
+      "maxHp": 1200000,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss_Makari",
+      "type": "Makari",
+      "rarity": "Legendary",
+      "damageDealt": 350000,
+      "damageType": "Battle",
+      "startedOn": 1793006300,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 21000
+        },
+        {
+          "unitId": "custoKyrus",
+          "power": 21350
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 21700
+        },
+        {
+          "unitId": "custoAtlacoya",
+          "power": 22050
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "completedOn": 1793006600
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000002",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 1,
+      "remainingHp": 38000,
+      "maxHp": 1200000,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss_Makari",
+      "type": "Makari",
+      "rarity": "Legendary",
+      "damageDealt": 62000,
+      "damageType": "Bomb",
+      "startedOn": 1793006900,
+      "heroDetails": [],
+      "globalConfigHash": "synthetic",
+      "completedOn": 1793007200
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000001",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 2,
+      "remainingHp": 910000,
+      "maxHp": 1200000,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss_Nazdreg",
+      "type": "Nazdreg",
+      "rarity": "Legendary",
+      "damageDealt": 290000,
+      "damageType": "Battle",
+      "startedOn": 1793007500,
+      "heroDetails": [
+        {
+          "unitId": "adeptCelestine",
+          "power": 21000
+        },
+        {
+          "unitId": "adeptMorvenn",
+          "power": 21350
+        },
+        {
+          "unitId": "adeptCanoness",
+          "power": 21700
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 22050
+        },
+        {
+          "unitId": "adeptHospitaller",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "machineOfWarDetails": {
+        "unitId": "adeptExorcist",
+        "power": 18000
+      },
+      "completedOn": 1793007800
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000003",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 2,
+      "remainingHp": 640000,
+      "maxHp": 1200000,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss_Nazdreg",
+      "type": "Nazdreg",
+      "rarity": "Legendary",
+      "damageDealt": 270000,
+      "damageType": "Battle",
+      "startedOn": 1793008100,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 21000
+        },
+        {
+          "unitId": "custoKyrus",
+          "power": 21350
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 21700
+        },
+        {
+          "unitId": "custoAtlacoya",
+          "power": 22050
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "completedOn": 1793008400
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000001",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 0,
+      "remainingHp": 4388000,
+      "maxHp": 4800000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_Ghazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 412000,
+      "damageType": "Battle",
+      "startedOn": 1793008700,
+      "heroDetails": [
+        {
+          "unitId": "ultraCalgar",
+          "power": 21000
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 21350
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 21700
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 22050
+        },
+        {
+          "unitId": "ultraApothecary",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 18000
+      },
+      "completedOn": 1793009000
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000002",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 0,
+      "remainingHp": 3868000,
+      "maxHp": 4800000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_Ghazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 520000,
+      "damageType": "Battle",
+      "startedOn": 1793009300,
+      "heroDetails": [
+        {
+          "unitId": "darkaAzrael",
+          "power": 21000
+        },
+        {
+          "unitId": "darkaAsmodai",
+          "power": 21350
+        },
+        {
+          "unitId": "darkaHellblaster",
+          "power": 21700
+        },
+        {
+          "unitId": "darkaTerminator",
+          "power": 22050
+        },
+        {
+          "unitId": "darkaCompanion",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "machineOfWarDetails": {
+        "unitId": "darkaStormSpeeder",
+        "power": 18000
+      },
+      "completedOn": 1793009600
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000003",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 0,
+      "remainingHp": 3810000,
+      "maxHp": 4800000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_Ghazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 58000,
+      "damageType": "Bomb",
+      "startedOn": 1793009900,
+      "heroDetails": [],
+      "globalConfigHash": "synthetic",
+      "completedOn": 1793010200
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000001",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 0,
+      "remainingHp": 3505000,
+      "maxHp": 4800000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_Ghazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 305000,
+      "damageType": "Battle",
+      "startedOn": 1793010500,
+      "heroDetails": [
+        {
+          "unitId": "adeptCelestine",
+          "power": 21000
+        },
+        {
+          "unitId": "adeptMorvenn",
+          "power": 21350
+        },
+        {
+          "unitId": "adeptCanoness",
+          "power": 21700
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 22050
+        },
+        {
+          "unitId": "adeptHospitaller",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "machineOfWarDetails": {
+        "unitId": "adeptExorcist",
+        "power": 18000
+      },
+      "completedOn": 1793010800
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000002",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 0,
+      "remainingHp": 2945000,
+      "maxHp": 4800000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_Ghazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 560000,
+      "damageType": "Battle",
+      "startedOn": 1793011100,
+      "heroDetails": [
+        {
+          "unitId": "darkaAzrael",
+          "power": 21000
+        },
+        {
+          "unitId": "darkaAsmodai",
+          "power": 21350
+        },
+        {
+          "unitId": "darkaHellblaster",
+          "power": 21700
+        },
+        {
+          "unitId": "darkaTerminator",
+          "power": 22050
+        },
+        {
+          "unitId": "darkaCompanion",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "machineOfWarDetails": {
+        "unitId": "darkaStormSpeeder",
+        "power": 18000
+      },
+      "completedOn": 1793011400
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000001",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 0,
+      "remainingHp": 2547000,
+      "maxHp": 4800000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_Ghazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 398000,
+      "damageType": "Battle",
+      "startedOn": 1793011700,
+      "heroDetails": [
+        {
+          "unitId": "ultraCalgar",
+          "power": 21000
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 21350
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 21700
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 22050
+        },
+        {
+          "unitId": "ultraApothecary",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 18000
+      },
+      "completedOn": 1793012000
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000003",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 0,
+      "remainingHp": 1907000,
+      "maxHp": 4800000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_Ghazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 640000,
+      "damageType": "Battle",
+      "startedOn": 1793012300,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 21000
+        },
+        {
+          "unitId": "custoKyrus",
+          "power": 21350
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 21700
+        },
+        {
+          "unitId": "custoAtlacoya",
+          "power": 22050
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic",
+      "completedOn": 1793012600
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000001",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 0,
+      "remainingHp": 1841000,
+      "maxHp": 4800000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_Ghazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 66000,
+      "damageType": "Bomb",
+      "startedOn": 1793012900,
+      "heroDetails": [],
+      "globalConfigHash": "synthetic",
+      "completedOn": 1793013200
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000002",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 0,
+      "remainingHp": 1770000,
+      "maxHp": 4800000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_Ghazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 71000,
+      "damageType": "Bomb",
+      "startedOn": 1793013500,
+      "heroDetails": [],
+      "globalConfigHash": "synthetic",
+      "completedOn": 1793013800
+    },
+    {
+      "userId": "00000000-0000-4000-8000-000000000003",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 0,
+      "remainingHp": 1770000,
+      "maxHp": 4800000,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss_Ghazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 0,
+      "damageType": "Battle",
+      "startedOn": 1793014100,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 21000
+        },
+        {
+          "unitId": "custoKyrus",
+          "power": 21350
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 21700
+        },
+        {
+          "unitId": "custoAtlacoya",
+          "power": 22050
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 22400
+        }
+      ],
+      "globalConfigHash": "synthetic"
+    }
+  ]
+}
