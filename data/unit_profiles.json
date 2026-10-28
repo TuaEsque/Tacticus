@@ -1,0 +1,35 @@
+{
+  "source": "Base values from game data 1.42 (gameInfo). Check them against each unit's info panel in-game.",
+  "units": {
+    "tauCrisis": {
+      "name": "Re'vas",
+      "movement": 3,
+      "range": 2,
+      "traits": ["BigTarget", "Flying", "Mechanical", "RangedSpecialist"]
+    },
+    "tauFarsight": {
+      "name": "Farsight",
+      "movement": 4,
+      "range": 2,
+      "traits": ["BeastSlayer", "BigTarget", "Flying", "Mechanical"]
+    },
+    "tauDarkstrider": {
+      "name": "Darkstrider",
+      "movement": 3,
+      "range": 2,
+      "traits": ["Infiltrate", "RangedSpecialist", "SuppressiveFire"]
+    },
+    "eldarLhykhis": {
+      "name": "Lhykhis",
+      "movement": 4,
+      "range": 2,
+      "traits": ["Flying", "Infiltrate"]
+    },
+    "admecManipulus": {
+      "name": "Actus",
+      "movement": 3,
+      "range": 2,
+      "traits": ["Flying", "Mechanic", "Mechanical"]
+    }
+  }
+}

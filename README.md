@@ -144,6 +144,19 @@ The aim is to get the most useful damage from every token:
 - Averages built from one or two battles are noisy, so check the `×N` sample count next to each team.
 - Nothing here touches the game client: it reads the official public API and draws its own window. There is no memory reading and no input automation.
 
+### Battle Planner (in progress)
+
+[tacticus_board.py](tacticus_board.py) models a raid battle board that you enter by hand. Nothing is read from the game screen. It currently works out, for each unit:
+
+- **Where it can move:** one move per turn, up to its movement stat. It can pass through allies but not stop on them. Enemies and impassable hexes block, unless it has Flying. Razor wire, ice and fire end the move, unless it has Flying, Unstoppable or Vehicle.
+- **What it can attack from there:** melee on adjacent enemies. Ranged needs the target in range and in line of sight, and is unavailable while an enemy is adjacent. Indirect Fire ignores line of sight.
+
+Boss maps are stored as JSON in a growing map bank: terrain per hex, sight-blocking hexes, deployment hexes and known enemy spawn layouts. Hero movement, range and traits are in [data/unit_profiles.json](data/unit_profiles.json); check them against the in-game info panels.
+
+Not modelled yet: elevation and cliffs, bridges, Overwatch, damage, and abilities. Two rules are assumptions until checked in-game:
+- units don't block line of sight;
+- a line passing exactly between two hexes is blocked only if both hexes block sight.
+
 ### Running the tests
 
 ```bash
